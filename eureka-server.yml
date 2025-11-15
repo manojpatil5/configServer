@@ -4,10 +4,9 @@ server:
 spring:
   application:
     name: eureka-server
-  config:
-    import: "configserver:"
-
+  
 eureka:
   client:
     registerWithEureka: false
     fetchRegistry: false
+
