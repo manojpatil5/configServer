@@ -1,22 +1,24 @@
 server:
   port: 8088
+
 spring:
   application:
     name: api-gateway
   config:
-    import: "optional:configserver:http://localhost:8888"
+    import: "configserver:"
+
   cloud:
-    discovery:
-      enabled: true
     gateway:
       discovery:
         locator:
           enabled: true
+
       routes:
         - id: user-service
           uri: lb://USER-SERVICE
           predicates:
             - Path=/api/users/**
+
         - id: order-service
           uri: lb://ORDER-SERVICE
           predicates:
